@@ -38,4 +38,17 @@ func TestAppsSpec(t *testing.T) {
 			})
 		})
     })
+
+    Convey("Given a valid refresh_token", t, func(){
+        httpmock.RegisterResponder("POST", "https://cloud.xee.com/v1/auth/access_token.json",
+            httpmock.NewStringResponder(201, tokenResponse))
+
+        Convey("When asking an access token", func() {
+            token, err := sdk.GetTokenFromRefreshToken("azerty")
+			Convey("AccessToken should be valid", func() {
+                So(err, ShouldBeNil)
+                So(token.AccessToken, ShouldEqual, "ezddez")
+			})
+		})
+    })
 }
