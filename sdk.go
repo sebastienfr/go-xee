@@ -11,7 +11,7 @@ const (
     timeout = 10
 )
 
-// SDK struct
+// SDK struct is used to handle API calls
 type SDK struct {
     host         string
 	redirect     string
