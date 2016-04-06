@@ -15,11 +15,7 @@ const (
 
 // GetAuthURI to allow user to connect
 func (s *SDK) GetAuthURI(state string) string {
-    u, err := url.Parse(s.host + authURL)
-
-    if err != nil {
-        panic(err)
-    }
+    u, _:= url.Parse(s.host + authURL)
 
     parameters := url.Values{}
     parameters.Add("client_id", s.clientID)
