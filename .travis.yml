@@ -8,8 +8,7 @@ before_install:
   - pip install --user codecov
 
 script:
-  - go test -v $(go list ./... | grep -v /vendor/)
-  - sh test_cover.sh
+  - ./test_cover.sh
 
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
