@@ -10,7 +10,7 @@ before_install:
 
 script:
   # Vet examines Go source code and reports suspicious construct
-  - go vet github.com/vendor/package...
+  - go vet github.com/laibulle/go-xee
   # Run the unit tests suite
   - go test -v ./...
   # Collect coverage reports
