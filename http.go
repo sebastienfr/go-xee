@@ -46,6 +46,8 @@ func (s *SDK) decodeGetRequest(u string, token string, params map[string]string,
 		return err
 	} else if res.StatusCode == http.StatusForbidden {
 		return ErrForbidden
+    } else if res.StatusCode == http.StatusNotFound {
+        return ErrEntityNotFound
 	} else if res.StatusCode != http.StatusOK {
 		return fmt.Errorf("GET %v on %v", res.StatusCode, uri)
 	}

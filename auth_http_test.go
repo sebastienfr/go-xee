@@ -13,7 +13,7 @@ func TestAppsSpec(t *testing.T) {
 
 		Convey("When get Auth URI", func() {
             uri := sdk.GetAuthURI("azerty")
-			Convey("The access should be granted", func() {
+			Convey("The redirect URI should be well formatted", func() {
                 So(uri, ShouldEqual, "https://cloud.xee.com/v1/auth/auth?client_id=myclient&redirect_uri=http%3A%2F%2Flocalhost&state=azerty")
 			})
 		})

@@ -2,7 +2,9 @@
 
 # Xee Go SDK
 
-This is an unofficial SDK for Xee
+This is an unofficial SDK for Xee. 
+
+See godoc [here](https://godoc.org/github.com/laibulle/go-xee) 
 
 ## Getting started
 
