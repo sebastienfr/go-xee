@@ -3,5 +3,13 @@ language: go
 go:
     - 1.6
 
+before_install:
+  - go get golang.org/x/tools/cmd/cover
+  - pip install --user codecov
+
+script:
+  - go test -v $(go list ./... | grep -v /vendor/)
+  - sh test_cover.sh
+
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - codecov
