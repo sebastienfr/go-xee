@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/laibulle/go-xee.svg?branch=master)](https://travis-ci.org/laibulle/go-xee)
+
 # Xee Go SDK
 
 This is an unofficial SDK for Xee
@@ -8,7 +10,7 @@ This is an unofficial SDK for Xee
     package main
     
     import (
-        "github.com/laibulle/xee"
+        "github.com/laibulle/go-xee"
     )
     
     func main() {

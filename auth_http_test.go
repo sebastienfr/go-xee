@@ -2,7 +2,7 @@ package xee_test
 
 import (
 	"testing"
-    "github.com/laibulle/xee"
+    "github.com/laibulle/go-xee"
 
 	. "github.com/smartystreets/goconvey/convey"
 )

@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/laibulle/xee",
+	"ImportPath": "github.com/laibulle/go-xee",
 	"GoVersion": "go1.6",
 	"GodepVersion": "v60",
 	"Packages": [
