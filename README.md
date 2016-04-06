@@ -1,10 +1,11 @@
 [![Build Status](https://travis-ci.org/laibulle/go-xee.svg?branch=master)](https://travis-ci.org/laibulle/go-xee)
+[![Software License](https://img.shields.io/badge/License-MIT-orange.svg?style=flat-square)](https://github.com/laibulle/go-xee/blob/master/LICENSE)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](https://godoc.org/github.com/laibulle/go-xee)
+[![Coverage Status](http://codecov.io/github/laibulle/go-xee/coverage.svg?branch=master)](http://codecov.io/github/laibulle/go-xee?branch=master)
 
 # Xee Go SDK
 
 This is an unofficial SDK for Xee. 
-
-See godoc [here](https://godoc.org/github.com/laibulle/go-xee) 
 
 ## Getting started
 
