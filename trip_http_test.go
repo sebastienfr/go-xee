@@ -5,6 +5,7 @@ import (
     "github.com/laibulle/go-xee"
     "github.com/jarcoal/httpmock"
     "fmt"
+    "time"
 
 	. "github.com/smartystreets/goconvey/convey"
 )
@@ -24,7 +25,8 @@ func TestTripsSpec(t *testing.T) {
             httpmock.RegisterResponder("GET", "https://cloud.xee.com/v3/cars/1/trips",
             httpmock.NewStringResponder(200, fmt.Sprintf("[%s]", tripResponseBody)))
 
-            trips, err := sdk.FindTrips(1, validToken, nil, nil)
+            now := time.Now()
+            trips, err := sdk.FindTrips(1, validToken, &now, &now)
 
 			Convey("No error", func() {
                 So(err, ShouldBeNil)

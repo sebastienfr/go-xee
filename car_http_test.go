@@ -33,10 +33,23 @@ func TestCarSpec(t *testing.T) {
                 So(err, ShouldNotBeNil)
             })
         })
+
+        sdk.SetSandbox(false)
+        Convey("When fetching cars and server has issue", func() {
+            httpmock.RegisterResponder("GET", "https://cloud.xee.com/v3/users/1/cars",
+            httpmock.NewStringResponder(http.StatusBadGateway, ""))
+
+            _, err := sdk.FindCars(1, validToken)
+			Convey("Error should not be nil", func() {
+                So(err.Error(), ShouldEqual, "GET 502 on https://cloud.xee.com/v3/users/1/cars")
+			})
+		})
     })
 
     sdk.SetSandbox(false)
 	Convey("Given a up Xee server", t, func() {
+
+
 		Convey("When fetching cars with valid token", func() {
             httpmock.RegisterResponder("GET", "https://cloud.xee.com/v3/users/1/cars",
             httpmock.NewStringResponder(200, fmt.Sprintf("[%s]", carResponseBody)))
