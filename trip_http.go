@@ -22,7 +22,7 @@ func (s *SDK) FindTrips(carID int64, token string, begin *time.Time, stop *time.
          params["stop"] = (*stop).String()
     }
 
-    uri := fmt.Sprintf(locationsURL, carID)
+    uri := fmt.Sprintf(tripURL, carID)
     err := s.decodeGetRequest(uri, token, params, &trips)
 
     return trips, err

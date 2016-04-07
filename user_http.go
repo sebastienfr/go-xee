@@ -5,12 +5,12 @@ import (
 )
 
 const (
-    userURL     = "/v1/user/%v.json"
+    userURL = "/v3/users/%v"
 )
 
 // GetMe return a user from an access token
 func (s *SDK) GetMe(token string) (User, error) {
-	uri := fmt.Sprintf(s.host+userURL, "me")
+	uri := fmt.Sprintf(userURL, "me")
 	user := User{}
 
     err := s.decodeGetRequest(uri, token, nil, &user)
