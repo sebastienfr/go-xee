@@ -5,6 +5,7 @@ import (
     "github.com/laibulle/go-xee"
     "github.com/jarcoal/httpmock"
     "fmt"
+    "time"
 
 	. "github.com/smartystreets/goconvey/convey"
 )
@@ -20,11 +21,24 @@ func TestLocationSpec(t *testing.T) {
     sdk := xee.NewSDK("myidentifier", "mysecret", "http://localhost/xee-callback")
 
 	Convey("Given a up Xee server", t, func() {
-		Convey("When fetching cars with valid token", func() {
+		Convey("When fetching car locations", func() {
             httpmock.RegisterResponder("GET", "https://cloud.xee.com/v3/cars/1/locations",
             httpmock.NewStringResponder(200, fmt.Sprintf("[%s]", locationResponseBody)))
+            now := time.Now()
+            limit := 1
+            locations, err := sdk.FindLocations(1, validToken, &limit, &now, &now)
 
-            locations, err := sdk.FindLocations(1, validToken, nil, nil, nil)
+			Convey("No error", func() {
+                So(err, ShouldBeNil)
+                So(len(locations), ShouldEqual, 1)
+			})
+		})
+
+        Convey("When fetchin trip locations", func() {
+            httpmock.RegisterResponder("GET", "https://cloud.xee.com/v3/cars/1/trips/1/locations",
+            httpmock.NewStringResponder(200, fmt.Sprintf("[%s]", locationResponseBody)))
+
+            locations, err := sdk.FindLocationsByTrip(1, "1", validToken)
 
 			Convey("No error", func() {
                 So(err, ShouldBeNil)

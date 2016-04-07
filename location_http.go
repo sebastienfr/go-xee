@@ -7,7 +7,7 @@ import (
 
 const (
     locationsURL       = "/v3/cars/%d/locations"
-    locationsByTripURL = "/v3/cars/{carId}/trips/%s/locations"
+    locationsByTripURL = "/v3/cars/%d/trips/%s/locations"
 )
 
 // FindLocations for a given car
@@ -35,11 +35,11 @@ func (s *SDK) FindLocations(carID int64, token string, limit *int, begin *time.T
 
 
 // FindLocationsByTrip for a given car
-func (s *SDK) FindLocationsByTrip(tripID string, token string) ([]Location, error) {
+func (s *SDK) FindLocationsByTrip(carID int64, tripID string, token string) ([]Location, error) {
     var locations = make([]Location, 0)
     var params = make(map[string]string)
 
-    uri := fmt.Sprintf(locationsByTripURL, tripID)
+    uri := fmt.Sprintf(locationsByTripURL, carID, tripID)
     err := s.decodeGetRequest(uri, token, params, &locations)
 
     return locations, err

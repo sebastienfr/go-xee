@@ -5,6 +5,7 @@ import (
     "github.com/laibulle/go-xee"
     "github.com/jarcoal/httpmock"
     "fmt"
+    "time"
 
 	. "github.com/smartystreets/goconvey/convey"
 )
@@ -20,11 +21,29 @@ func TestSignalsSpec(t *testing.T) {
     sdk := xee.NewSDK("myidentifier", "mysecret", "http://localhost/xee-callback")
 
 	Convey("Given a up Xee server", t, func() {
-		Convey("When fetching cars with valid token", func() {
+		Convey("When fetching car signals", func() {
             httpmock.RegisterResponder("GET", "https://cloud.xee.com/v3/cars/1/signals",
             httpmock.NewStringResponder(200, fmt.Sprintf("[%s]", signalsResponseBody)))
 
-            signals, err := sdk.FindSignals(1, validToken, nil, nil, nil, nil)
+            now := time.Now()
+            limit := 1
+            names := []string{"VehicleSpeed"}
+
+            signals, err := sdk.FindSignals(1, validToken, &names, &limit, &now, &now)
+
+			Convey("No error", func() {
+                So(err, ShouldBeNil)
+                So(len(signals), ShouldEqual, 1)
+			})
+		})
+
+        Convey("When fetching trip signals", func() {
+            httpmock.RegisterResponder("GET", "https://cloud.xee.com/v3/cars/1/trips/1/signals",
+            httpmock.NewStringResponder(200, fmt.Sprintf("[%s]", signalsResponseBody)))
+
+            names := []string{"VehicleSpeed"}
+
+            signals, err := sdk.FindSignalsByTrip(1, "1", validToken, &names)
 
 			Convey("No error", func() {
                 So(err, ShouldBeNil)
