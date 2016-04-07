@@ -6,8 +6,8 @@ import (
 )
 
 const (
-    locationsURL       = "/cars/%d/locations"
-    locationsByTripURL = "/cars/{carId}/trips/%s/locations"
+    locationsURL       = "/v3/cars/%d/locations"
+    locationsByTripURL = "/v3/cars/{carId}/trips/%s/locations"
 )
 
 // FindLocations for a given car

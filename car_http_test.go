@@ -23,9 +23,20 @@ func TestCarSpec(t *testing.T) {
     httpmock.Activate()
     defer httpmock.DeactivateAndReset()
 
-	Convey("Given a sdk", t, func() {
-        sdk := xee.NewSDK("myclient", "mysecret", "http://localhost")
+    sdk := xee.NewSDK("myclient", "mysecret", "http://localhost")
+    sdk.SetSandbox(true)
 
+    Convey("Given a down Xee server", t, func() {
+        Convey("When asking a resource", func() {
+            _, err := sdk.FindCarByID(1, 1, validToken)
+            Convey("Error should not be nil", func() {
+                So(err, ShouldNotBeNil)
+            })
+        })
+    })
+
+    sdk.SetSandbox(false)
+	Convey("Given a up Xee server", t, func() {
 		Convey("When fetching cars with valid token", func() {
             httpmock.RegisterResponder("GET", "https://cloud.xee.com/v3/users/1/cars",
             httpmock.NewStringResponder(200, fmt.Sprintf("[%s]", carResponseBody)))

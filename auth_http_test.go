@@ -16,6 +16,7 @@ func TestAppsSpec(t *testing.T) {
     defer httpmock.DeactivateAndReset()
 
     sdk := xee.NewSDK("myclient", "mysecret", "http://localhost")
+
 	Convey("Given a sdk", t, func() {
 		Convey("When get Auth URI", func() {
             uri := sdk.GetAuthURI("azerty")
@@ -25,6 +26,15 @@ func TestAppsSpec(t *testing.T) {
 		})
 
 	})
+
+    Convey("Given a down Xee server", t, func() {
+         Convey("When asking an access token", func() {
+            _, err := sdk.GetTokenFromCode("azerty")
+			Convey("AccessToken should be valid", func() {
+                So(err, ShouldNotBeNil)
+			})
+		})
+    })
 
     Convey("Given a valid code", t, func(){
         httpmock.RegisterResponder("POST", "https://cloud.xee.com/v1/auth/access_token.json",
