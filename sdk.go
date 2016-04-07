@@ -1,19 +1,19 @@
 package xee
 
 import (
-    "net/http"
-    "time"
+	"net/http"
+	"time"
 )
 
 const (
-    cloud   = "https://cloud.xee.com"
-    sandbox = "https://staging.xee.com"
-    timeout = 10
+	cloud   = "https://cloud.xee.com"
+	sandbox = "https://staging.xee.com"
+	timeout = 10
 )
 
 // SDK struct is used to handle API calls
 type SDK struct {
-    host         string
+	host         string
 	redirect     string
 	clientID     string
 	clientSecret string
@@ -22,7 +22,7 @@ type SDK struct {
 
 // NewSDK create an new instance of SDK
 func NewSDK(identifier string, secret string, redirect string) *SDK {
-    return &SDK{
+	return &SDK{
 		host:         cloud,
 		redirect:     redirect,
 		clientID:     identifier,
@@ -33,9 +33,9 @@ func NewSDK(identifier string, secret string, redirect string) *SDK {
 
 // SetSandbox to use pre-production environnment
 func (sdk *SDK) SetSandbox(isSandbox bool) {
-    if isSandbox {
-        sdk.host = sandbox
-    }else{
-        sdk.host = cloud
-    }
+	if isSandbox {
+		sdk.host = sandbox
+	} else {
+		sdk.host = cloud
+	}
 }

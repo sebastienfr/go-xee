@@ -1,7 +1,7 @@
 package xee
 
 import (
-    "time"
+	"time"
 )
 
 // TokenResponse struct

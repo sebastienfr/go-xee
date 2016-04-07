@@ -1,32 +1,32 @@
 package xee
 
 import (
-    "fmt"
+	"fmt"
 )
 
 const (
-    carsURL = "/v3/users/%d/cars"
-    carURL  = "/v3/users/%d/cars/%d"
+	carsURL = "/v3/users/%d/cars"
+	carURL  = "/v3/users/%d/cars/%d"
 )
 
 // FindCars for a given user
 func (s *SDK) FindCars(userID int64, token string) ([]Car, error) {
-    var cars = make([]Car, 0)
-    var params = make(map[string]string)
+	var cars = make([]Car, 0)
+	var params = make(map[string]string)
 
-    uri := fmt.Sprintf(carsURL, userID)
-    err := s.decodeGetRequest(uri, token, params, &cars)
+	uri := fmt.Sprintf(carsURL, userID)
+	err := s.decodeGetRequest(uri, token, params, &cars)
 
-    return cars, err
+	return cars, err
 }
 
 // FindCarByID find with ID for a given user
 func (s *SDK) FindCarByID(userID int64, carID int64, token string) (Car, error) {
-    var car = Car{}
-    var params = make(map[string]string)
+	var car = Car{}
+	var params = make(map[string]string)
 
-    uri := fmt.Sprintf(carURL, userID, carID)
-    err := s.decodeGetRequest(uri, token, params, &car)
+	uri := fmt.Sprintf(carURL, userID, carID)
+	err := s.decodeGetRequest(uri, token, params, &car)
 
-    return car, err
+	return car, err
 }

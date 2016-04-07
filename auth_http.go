@@ -9,21 +9,21 @@ import (
 )
 
 const (
-	authURL     = "/v1/auth/auth"
-	tokenURL    = "/v1/auth/access_token.json"
+	authURL  = "/v1/auth/auth"
+	tokenURL = "/v1/auth/access_token.json"
 )
 
 // GetAuthURI to allow user to connect
 func (s *SDK) GetAuthURI(state string) string {
-    u, _:= url.Parse(s.host + authURL)
+	u, _ := url.Parse(s.host + authURL)
 
-    parameters := url.Values{}
-    parameters.Add("client_id", s.clientID)
-    parameters.Add("redirect_uri", s.redirect)
-    parameters.Add("state", state)
-    u.RawQuery = parameters.Encode()
+	parameters := url.Values{}
+	parameters.Add("client_id", s.clientID)
+	parameters.Add("redirect_uri", s.redirect)
+	parameters.Add("state", state)
+	u.RawQuery = parameters.Encode()
 
-    return u.String()
+	return u.String()
 }
 
 // GetTokenFromCode is used to get a Token from a code
