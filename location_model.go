@@ -9,6 +9,6 @@ type Location struct {
 	Latitude   float32   `json:"latitude"`
 	Longitude  float32   `json:"longitude"`
 	Altitude   float32   `json:"altitude"`
-	Satellites int       `json:"satallites"`
+	Satellites int       `json:"satellites"`
 	Date       time.Time `json:"date"`
 }

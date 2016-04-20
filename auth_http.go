@@ -9,8 +9,8 @@ import (
 )
 
 const (
-	authURL  = "/v1/auth/auth"
-	tokenURL = "/v1/auth/access_token.json"
+	authURL  = "/v3/auth/auth"
+	tokenURL = "/v3/auth/access_token.json"
 )
 
 // GetAuthURI to allow user to connect
