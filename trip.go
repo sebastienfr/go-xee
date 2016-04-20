@@ -6,11 +6,9 @@ import (
 
 // Trip struct
 type Trip struct {
-	UUID           string    `json:"uuid"`
-	BeginLocation  Location  `json:"beginLocation"`
-	StopLocation   Location  `json:"stopLocation"`
-	BeginDate      time.Time `json:"beginDate"`
-	StopDate       time.Time `json:"stopDate"`
-	CreationDate   time.Time `json:"creationDate"`
-	LastUpdateDate time.Time `json:"lastUpdateDate"`
+	ID            string    `json:"id"`
+	BeginLocation Location  `json:"beginLocation"`
+	EndLocation   Location  `json:"endLocation"`
+	BeginDate     time.Time `json:"beginDate"`
+	StopDate      time.Time `json:"stopDate"`
 }

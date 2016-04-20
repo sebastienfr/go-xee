@@ -31,7 +31,7 @@ func NewSDK(identifier string, secret string, redirect string) *SDK {
 	}
 }
 
-// SetSandbox to use pre-production environnment
+// SetSandbox to use pre-production environment
 func (sdk *SDK) SetSandbox(isSandbox bool) {
 	if isSandbox {
 		sdk.host = sandbox

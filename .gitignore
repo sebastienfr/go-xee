@@ -1,2 +1,5 @@
+*.iml
+/_example/main
+/.idea
 coverage.txt
 .profile.cov
