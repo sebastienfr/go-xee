@@ -22,7 +22,7 @@ func TestAppsSpec(t *testing.T) {
 		Convey("When get Auth URI", func() {
 			uri := sdk.GetAuthURI("azerty")
 			Convey("The redirect URI should be well formatted", func() {
-				So(uri, ShouldEqual, "https://cloud.xee.com/v1/auth/auth?client_id=myclient&redirect_uri=http%3A%2F%2Flocalhost&state=azerty")
+				So(uri, ShouldEqual, "https://cloud.xee.com/v3/auth/auth?client_id=myclient&redirect_uri=http%3A%2F%2Flocalhost&state=azerty")
 			})
 		})
 
@@ -38,7 +38,7 @@ func TestAppsSpec(t *testing.T) {
 	})
 
 	Convey("Given a valid code", t, func() {
-		httpmock.RegisterResponder("POST", "https://cloud.xee.com/v1/auth/access_token.json",
+		httpmock.RegisterResponder("POST", "https://cloud.xee.com/v3/auth/access_token.json",
 			httpmock.NewStringResponder(201, tokenResponse))
 
 		Convey("When asking an access token", func() {
@@ -51,7 +51,7 @@ func TestAppsSpec(t *testing.T) {
 	})
 
 	Convey("Given a valid refresh_token", t, func() {
-		httpmock.RegisterResponder("POST", "https://cloud.xee.com/v1/auth/access_token.json",
+		httpmock.RegisterResponder("POST", "https://cloud.xee.com/v3/auth/access_token.json",
 			httpmock.NewStringResponder(201, tokenResponse))
 
 		Convey("When asking an access token", func() {
