@@ -16,7 +16,7 @@ const (
 )
 
 const (
-	carResponseBody = `{"id":1337,"uuid":"110e8400-e29b-11d4-a716-446655440000","name":"Mark-42","make":"Mark","model":"42","year":2014,"numberPlate":"M-42-TS","deviceId":42,"cardbId":210,"creationDate":"2014-09-23T12:49:48+00:00","lastUpdateDate":"2016-02-19T08:41:58+00:00"}`
+	carResponseBody = `{"id":1337,"uuid":"110e8400-e29b-11d4-a716-446655440000","name":"Mark-42","make":"Mark","model":"42","year":2014,"numberPlate":"M-42-TS","deviceId":"E150000000","cardbId":210,"creationDate":"2014-09-23T12:49:48+00:00","lastUpdateDate":"2016-02-19T08:41:58+00:00"}`
 )
 
 func TestCarSpec(t *testing.T) {

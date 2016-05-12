@@ -12,7 +12,7 @@ type Car struct {
 	Make           *string   `json:"make"`
 	Year           int       `json:"year"`
 	NumberPlate    *string   `json:"numberPlate"`
-	DeviceID       *int64    `json:"deviceId"`
+	DeviceID       *string   `json:"deviceId"`
 	CardbID        int64     `json:"cardbId"`
 	CreationDate   time.Time `json:"creationDate"`
 	LastUpdateDate time.Time `json:"lastUpdateDate"`
